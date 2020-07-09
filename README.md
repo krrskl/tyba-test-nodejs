@@ -23,8 +23,8 @@ docker-compose up
 
 ```json
 {
-  "email": "admin@rdcr.com",
-  "password": "prueba123"
+  "email": "{{email}}",
+  "password": "{{password}}"
 }
 ```
 
@@ -38,9 +38,11 @@ docker-compose up
 
 ```json
 {
-  "email": "admin@rdcr.com",
-  "password": "prueba123",
-  "name": "Rubén Carrascal"
+  "user": {
+    "email": "{{email}}",
+    "password": "{{password}}",
+    "name": "{{name}}"
+  }
 }
 ```
 
@@ -56,8 +58,8 @@ docker-compose up
 
 ```json
 {
-  "lat": "12.91285",
-  "lng": "100.87808"
+  "lat": "{{latitude}}",
+  "lng": "{{longitude}}"
 }
 ```
 
