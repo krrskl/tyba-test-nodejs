@@ -2,21 +2,16 @@ const UserModel = require("../models/Users");
 const bcrypt = require("bcryptjs");
 
 class UserController {
-  constructor() {
-    this.salt = bcrypt.genSaltSync(6);
-  }
-
-  async signup(user) {
+  async signup(req, res) {
     try {
+      const { user } = req.body;
       if (!user.password) throw new Error("Password field is required.");
-      user.password = bcrypt.hashSync(user.password, this.salt);
-
-      const {
-        _doc: { password, ...newUser },
-      } = await UserModel.create(user);
-      return newUser;
+      user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(6));
+      const newUser = new UserModel(user);
+      const u = await newUser.save();
+      return res.json({ user: u.toJsonObj() });
     } catch (error) {
-      throw new Error(error);
+      return res.json({ errorMessage: error.message }).status(400);
     }
   }
 }
