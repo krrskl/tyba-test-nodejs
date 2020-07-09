@@ -3,7 +3,7 @@ const config = {
   user_mongodb: "tyba",
   password_mongodb: "tyba1234",
   url_mongodb:
-    "mongodb+srv://tyba:tyba1234@cluster0.0bwmp.mongodb.net/tyba_database?retryWrites=true&w=majority",
+    "mongodb+srv://tyba:tyba1234@cluster0.0bwmp.mongodb.net/tyba_database",
 };
 
 module.exports = config;

@@ -9,13 +9,13 @@ class UserController {
   async signup(user) {
     try {
       if (!user.password) throw new Error("Password field is required.");
-
       user.password = bcrypt.hashSync(user.password, this.salt);
-      const { password, ...newUser } = await UserModel.create(user);
+
+      const {
+        _doc: { password, ...newUser },
+      } = await UserModel.create(user);
       return newUser;
     } catch (error) {
-      console.log(error);
-
       throw new Error(error);
     }
   }

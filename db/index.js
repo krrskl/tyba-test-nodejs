@@ -4,12 +4,9 @@ const mongoose = require("mongoose");
 module.exports = class Database {
   constructor() {
     this.options = {
-      bufferCommands: false,
-      bufferMaxEntries: 0,
       useNewUrlParser: true,
+      useCreateIndex: true,
       useUnifiedTopology: true,
-      user: config.user_mongodb,
-      pass: config.password_mongodb,
     };
   }
 
